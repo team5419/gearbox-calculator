@@ -1,0 +1,57 @@
+.box {
+  border: 2px solid #cccc;
+}
+
+#motor_sl,
+#motor_vars {
+  display: inline;
+}
+.motor_var {
+  display: inline-block;
+}
+.motor_var > span {
+  display: block;
+  width: fit-content !important;
+}
+.motor_var > input {
+  width: 70%;
+}
+#main {
+  display: flex;
+  /* align-items: top; */
+  justify-content: space-between;
+}
+#drivetrain_vars {
+  display: inline-block;
+}
+#drivetrain_vars input {
+  margin-left: 1rem;
+  width: 4rem;
+  display: inline-block;
+}
+#gears_table th {
+  text-align: left;
+  white-space: nowrap;
+  padding: 4px;
+  text-decoration: none;
+}
+#gears {
+  width: fit-content;
+  display: inline-block;
+}
+#gears_table {
+  border-collapse: collapse;
+  max-width: 1px !important;
+}
+#add_gear {
+  width: 100%;
+}
+#gears_table td {
+  /* border: solid 1px black; */
+  border: none;
+  /* width: 50%; */
+}
+#gears_table input {
+  /* border: none; */
+  width: 97%;
+}

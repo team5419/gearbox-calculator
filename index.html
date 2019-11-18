@@ -2,15 +2,68 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>FRC Single Speed Drivetrain Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
-    <!-- You can also require other files to run in this process -->
+    <div class="box" id="motor">
+      <select id="motor_sl">
+        <option>Falcon 500</option>
+        <option selected>CIM</option>
+        <option>Mini CIM</option>
+        <option>Bag Motor</option>
+        <option>775 Pro</option>
+        <option>AM 775</option>
+        <option>AM 9015</option>
+        <option>1 CIM, 1 Mini CIM</option>
+        <option>1 CIM, 2 Mini CIM</option>
+        <option>2 CIM, 1 Mini CIM</option>
+        <option>BB RS-775-18</option>
+        <option>BB RS-550</option>
+      </select>
+      <div id="motor_vars">
+        <div class="motor_var"><span>Free Speed (RPM)</span><input class="var" type="number" min="0" id="fs"></div>
+        <div class="motor_var"><span>Stall Torque (N*m)</span><input class="var" type="number" min="0" id="st"></div>
+        <div class="motor_var"><span>Stall Current (Amp)</span><input class="var" type="number" min="0" id="sc"></div>
+        <div class="motor_var"><span>Free Current (Amp)</span><input class="var" type="number" min="0" id="fc"></div>
+      </div>
+    </div>
+    <div id='main'>
+      <div id="drivetrain_vars"  class="box">
+        <table><tbody>
+          <tr><td><span>Speed Loss Constant</span></td><td><input class="var" type="number" max="1" min="0" id="slc" value="0.81"></td></tr> <!--speed loss constant-->
+          <tr><td><span>Drivetrain Effiency</span></td><td><input class="var" type="number" max="1" min="0" id="de" value="0.9"></td></tr> <!--drivetrain effiancy-->
+          <tr><td><span>Gearboxes</span></td><td><input class="var" type="number" min="1" id="tg" value="2"></td></tr> <!--number of gearboxes-->
+          <tr><td><span>Motors in each gearbox</span></td><td><input class="var" type="number" min="1" id="mg" value="2"></td></tr> <!--number of motors in each gearbox-->
+          <tr><td><span>Total Weight</span></td><td><input class="var" type="number" min="0" id="tw" value="100"></td></tr> <!--total weight (lbs)-->
+          <tr><td><span>Weight on Drivetrain Wheels</span></td><td><input class="var" type="number" min="0" max="1" id="wa" value="1.00"></td></tr> <!--weight on drivetrain wheels-->
+          <tr><td><span>Wheel Diameter (in)</span></td><td><input class="var" type="number" min="0" max="1" id="wd" value="4"></td></tr> <!--wheel diameter (in)-->
+          <tr><td><span>Wheel Coefficent</span></td><td><input class="var" type="number" min="0" id="wc" value="1.1"></td></tr> <!--Wheel coefficent-->      
+        </table></tbody>
+      </div>
+      <div id="gears"  class="box">
+        <table id="gears_table">
+          <thead><tr><th>Driving Gear</th><th>Driven Gear</th></tr></thead>
+          <tbody id="gear_body"></tbody>
+        </table>
+        <button id='add_gear'>+ gear</button>
+      </div>
+      <div id="outputs" class="box">
+        <div>
+          <span>Drivetrain free speed</span>
+          <span id="das"></span> <!--Drivetrain adjusted speed-->
+        </div>
+        <div>
+          <span>Drivetrain adjusted speed</span>
+          <span id="dfs"></span>
+        </div>
+        <div>
+          <span>Current draw per motor</span>
+          <span id="cdpm"></span>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="motors.js"></script>
     <script src="./renderer.js"></script>
   </body>
 </html>

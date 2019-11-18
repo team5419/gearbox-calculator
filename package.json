@@ -1,10 +1,11 @@
 {
   "name": "electron-quick-start",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "An application for calculations related to single speed gear boxes",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "reinstall": "rm -rf ./node_modules/ && npm install && npm start"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -14,9 +15,12 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "5419",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^7.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }
