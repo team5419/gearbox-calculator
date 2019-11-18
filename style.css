@@ -4,7 +4,7 @@
 
 #motor_sl,
 #motor_vars {
-  display: inline;
+  display: inline-block;
 }
 .motor_var {
   display: inline-block;
@@ -54,4 +54,17 @@
 #gears_table input {
   /* border: none; */
   width: 97%;
+}
+#outputs{
+  padding: 8px;
+}
+.ans_t{
+  display: inline-block;
+  float: left;
+  padding-right: 10px;
+}
+.ans_a{
+  display: inline-block;
+  /* text-align: right; */
+  float: right
 }
