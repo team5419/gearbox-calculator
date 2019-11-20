@@ -6,93 +6,163 @@
   <title>FRC Single Speed Drivetrain Calculator</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-
+  <script src="bootstrap.min.js"></script>
 </head>
 
 <body>
-  <div class="box" id="motor">
-    <select id="motor_sl">
-      <option>Falcon 500</option>
-      <option selected>CIM</option>
-      <option>Mini CIM</option>
-      <option>Bag Motor</option>
-      <option>775 Pro</option>
-      <option>AM 775</option>
-      <option>AM 9015</option>
-      <option>1 CIM, 1 Mini CIM</option>
-      <option>1 CIM, 2 Mini CIM</option>
-      <option>2 CIM, 1 Mini CIM</option>
-      <option>BB RS-775-18</option>
-      <option>BB RS-550</option>
-    </select>
-    <div id="motor_vars">
-      <div class="motor_var"><span>Free Speed (RPM)</span><input class="var" type="number" min="0" id="fs"></div>
-      <div class="motor_var"><span>Stall Torque (N*m)</span><input class="var" type="number" min="0" id="st"></div>
-      <div class="motor_var"><span>Stall Current (Amp)</span><input class="var" type="number" min="0" id="sc"></div>
-      <div class="motor_var"><span>Free Current (Amp)</span><input class="var" type="number" min="0" id="fc"></div>
+  <div id="left">
+    <div id="motor_sl" class="form-group">
+      <select id="motor_sl">
+        <option>Falcon 500</option>
+        <option selected>CIM</option>
+        <option>Mini CIM</option>
+        <option>Bag Motor</option>
+        <option>775 Pro</option>
+        <option>AM 775</option>
+        <option>AM 9015</option>
+        <option>1 CIM, 1 Mini CIM</option>
+        <option>1 CIM, 2 Mini CIM</option>
+        <option>2 CIM, 1 Mini CIM</option>
+        <option>BB RS-775-18</option>
+        <option>BB RS-550</option>
+      </select>
+    </div>
+    <div id="gears" class="form-group">
+    </div>
+    <div id="outputs" class="form-group">
     </div>
   </div>
-  <div id='main'>
-    <div id="drivetrain_vars" class="box">
+  <div id="right" class="form-group">
+    <div id="motors" class="form-group">
       <table>
-        <tbody>
-          <tr>
-            <td><span>Speed Loss Constant</span></td>
-            <td><input class="var" type="number" max="1" min="0" id="slc" value="0.81"></td>
-          </tr>
-          <tr>
-            <td><span>Drivetrain Effiency</span></td>
-            <td><input class="var" type="number" max="1" min="0" id="de" value="0.9"></td>
-          </tr>
-          <tr>
-            <td><span>Gearboxes</span></td>
-            <td><input class="var" type="number" min="1" id="tg" value="2"></td>
-          </tr>
-          <tr>
-            <td><span>Motors in each gearbox</span></td>
-            <td><input class="var" type="number" min="1" id="mg" value="2"></td>
-          </tr>
-          <tr>
-            <td><span>Total Weight (lbs)</span></td>
-            <td><input class="var" type="number" min="0" id="tw" value="100"></td>
-          </tr>
-          <tr>
-            <td><span>Weight on Drivetrain Wheels</span></td>
-            <td><input class="var" type="number" min="0" max="1" id="wa" value="1.00"></td>
-          </tr>
-          <tr>
-            <td><span>Wheel Diameter (in)</span></td>
-            <td><input class="var" type="number" min="0" max="1" id="wd" value="4"></td>
-          </tr>
-          <tr>
-            <td><span>Wheel Coefficent</span></td>
-            <td><input class="var" type="number" min="0" id="wc" value="1.1"></td>
-          </tr>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+
+            </div>
+          </td>
+          <td>
+            <div class="input-wrapper">
+
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+
+            </div>
+          </td>
+          <td>
+            <div class="input-wrapper">
+
+            </div>
+          </td>
+        </tr>
       </table>
-      </tbody>
     </div>
-    <div id="gears" class="box">
-      <table id="gears_table">
-        <thead>
-          <tr>
-            <th>Driving Gear</th>
-            <th>Driven Gear</th>
-          </tr>
-        </thead>
-        <tbody id="gear_body"></tbody>
+    <div id="constants" class="form-group">
+      <table>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+
+            </div>
+          </td>
+        </tr>
       </table>
-      <button id='add_gear'>+ gear</button>
+
     </div>
-    <div id="outputs" class="box">
-      <span class="ans_t">Free Speed:</span>
-      <span class="ans_a" id="das"></span><br>
-      <span class="ans_t">Adjusted Speed:</span>
-      <span class="ans_a" id="dfs"></span><br>
-      <span class="ans_t">Current Draw / Motor:</span>
-      <span class="ans_a" id="cdpm"></span>
+    <div id="gearbox" class="form-group">
+    </div>
+    <div id="weight" class="form-group">
+    </div>
+    <div id="weight" class="form-group">
     </div>
   </div>
+  <!-- <div id="drivetrain_vars" class="box">
+    <table class="table table-sm">
+      <tbody>
+        <tr>
+          <td><span>Free Speed (RPM)</span></td>
+          <td><input class="var form-control" type="number" min="0" id="fs"></td>
+        </tr>
+        <tr>
+          <td><span>Stall Torque (N*m)</span></td>
+          <td><input class="var form-control" type="number" min="0" id="st"></td>
+        </tr>
+        <tr>
+          <td><span>Stall Current (Amp)</span></td>
+          <td><input class="var form-control" type="number" min="0" id="sc"></td>
+        </tr>
+        <tr>
+          <td><span>Free Current (Amp)</span></td>
+          <td><input class="var form-control" type="number" min="0" id="fc"></td>
+        </tr>
+        <tr>
+          <td><span>Speed Loss Constant</span></td>
+          <td><input class="var form-control" type="number" max="1" min="0" id="slc" value="0.81"></td>
+        </tr>
+        <tr>
+          <td><span>Drivetrain Effiency</span></td>
+          <td><input class="var form-control" type="number" max="1" min="0" id="de" value="0.9"></td>
+        </tr>
+        <tr>
+          <td><span>Gearboxes</span></td>
+          <td><input class="var form-control" type="number" min="1" id="tg" value="2"></td>
+        </tr>
+        <tr>
+          <td><span>Motors in each gearbox</span></td>
+          <td><input class="var form-control" type="number" min="1" id="mg" value="2"></td>
+        </tr>
+        <tr>
+          <td><span>Total Weight (lbs)</span></td>
+          <td><input class="var form-control" type="number" min="0" id="tw" value="100"></td>
+        </tr>
+        <tr>
+          <td><span>Weight on Drivetrain Wheels</span></td>
+          <td><input class="var form-control" type="number" min="0" max="1" id="wa" value="1.00"></td>
+        </tr>
+        <tr>
+          <td><span>Wheel Diameter (in)</span></td>
+          <td><input class="var form-control" type="number" min="0" max="1" id="wd" value="4"></td>
+        </tr>
+        <tr>
+          <td><span>Wheel Coefficent</span></td>
+          <td><input class="var form-control" type="number" min="0" id="wc" value="1.1"></td>
+        </tr>
+    </table>
+    </tbody>
   </div>
+  <div id="gears" class="box">
+    <table id="gears_table" class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Driving Gear</th>
+          <th scope="col">Driven Gear</th>
+        </tr>
+      </thead>
+      <tbody id="gear_body"></tbody>
+    </table>
+    <div id="gear_wrapper">
+      <button id='add_gear' class='btn btn-dark'>Add Gear</button>
+    </div>
+  </div>
+  <div id="outputs" class="box">
+    <span class="ans_t">Free Speed:</span>
+    <span class="ans_a" id="das"></span><br>
+    <span class="ans_t">Adjusted Speed:</span>
+    <span class="ans_a" id="dfs"></span><br>
+    <span class="ans_t">Current Draw / Motor:</span>
+    <span class="ans_a" id="cdpm"></span>
+  </div> -->
   <script type="text/javascript" src="motors.js"></script>
   <script src="./renderer.js"></script>
 </body>

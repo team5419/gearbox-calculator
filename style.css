@@ -1,70 +1,47 @@
-.box {
+/* .box {
   border: 2px solid #cccc;
+} */
+.var{
+  max-height: 30px;
 }
-
-#motor_sl,
-#motor_vars {
-  display: inline-block;
+#drivetrain_vars input{
+  min-width: 80px;
+  max-width: 80px;
 }
-.motor_var {
-  display: inline-block;
-}
-.motor_var > span {
-  display: block;
-  width: fit-content !important;
-}
-.motor_var > input {
-  width: 70%;
-}
-#main {
+body {
+  padding: 8px;
   display: flex;
   /* align-items: top; */
-  justify-content: space-between;
+  justify-content: start;
 }
-#drivetrain_vars {
-  display: inline-block;
-}
-#drivetrain_vars input {
-  margin-left: 1rem;
-  width: 4rem;
-  display: inline-block;
-}
-#gears_table th {
+#gears_table th{
   text-align: left;
   white-space: nowrap;
-  padding: 4px;
-  text-decoration: none;
-}
-#gears {
-  width: fit-content;
-  display: inline-block;
-}
-#gears_table {
-  border-collapse: collapse;
-  max-width: 1px !important;
-}
-#add_gear {
-  width: 100%;
-}
-#gears_table td {
-  /* border: solid 1px black; */
-  border: none;
-  /* width: 50%; */
+  padding-left: 15px;
+  padding-right: 15px;
 }
 #gears_table input {
-  /* border: none; */
-  width: 97%;
+  max-width: 110px;
+  margin: 0;
+}
+#gear_wrapper{
+  width: 100%;
+}
+#add_gear {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #outputs{
   padding: 8px;
 }
 .ans_t{
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
   padding-right: 10px;
 }
 .ans_a{
-  display: inline-block;
-  /* text-align: right; */
+  /* display: inline-block; */
+  text-align: right;
   float: right
 }

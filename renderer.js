@@ -20,10 +20,10 @@ $(document).ready(() => {
     console.log(g1, g2);
     let gear = $(
       "<tr>" +
-      '<td><input class="gear_val var driving" type="number" value="' +
+      '<td><input class="gear_val var driving form-control" scope="row" type="number" value="' +
       g1 +
       '" min="1"></td>' +
-      '<td><input class="gear_val var driven" type="number" value="' +
+      '<td><input class="gear_val var driven form-control" type="number" value="' +
       g2 +
       '" min="1"></td>' +
       "</tr>"
