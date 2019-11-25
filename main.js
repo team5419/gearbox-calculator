@@ -9,13 +9,17 @@ let mainWindow
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 700,
+    width: 500,
+    height: 650,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
     }
   })
+  mainWindow.setMenuBarVisibility(false)
+  mainWindow.setAutoHideMenuBar(true)
+  mainWindow.removeMenu()
+
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')

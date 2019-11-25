@@ -1,6 +1,6 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
+  "name": "gearbox-calculator",
+  "version": "0.2.1",
   "description": "An application for calculations related to single speed gear boxes",
   "main": "main.js",
   "scripts": {
@@ -9,13 +9,10 @@
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "frc",
+    "gearbox"
   ],
-  "author": "5419",
+  "author": "Team 5419",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^7.0.0"

@@ -1,47 +1,61 @@
-/* .box {
-  border: 2px solid #cccc;
-} */
-.var{
-  max-height: 30px;
+body{
+  overflow: hidden;
 }
-#drivetrain_vars input{
-  min-width: 80px;
-  max-width: 80px;
-}
-body {
-  padding: 8px;
+#left, #right{
+  padding: 0 8px;
+  width: 50%;
   display: flex;
-  /* align-items: top; */
-  justify-content: start;
+  flex-direction: column;
+  justify-content: flex-end;
 }
-#gears_table th{
-  text-align: left;
-  white-space: nowrap;
-  padding-left: 15px;
-  padding-right: 15px;
+#right{
+  float: right;
+  border-left: 3px solid #ced4da;
 }
-#gears_table input {
-  max-width: 110px;
-  margin: 0;
+#left{
+  float: left;
 }
-#gear_wrapper{
-  width: 100%;
-}
-#add_gear {
-  width: 100px;
+.input-group{
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0.4rem;
+  padding: 2px;
+  width: 100%;
+  border-top: 2px solid #ced4da;
+}
+.input-group>*{
+  width: 100%;
+}
+#motors_wrap, #motors{
+  border-top: none;
+}
+label{
+  font-size: 15px;
+  margin-bottom: 1px !important;
+}
+#gears_table{
+  overflow: scroll;
+}
+#table_wrap{
+  height: 12.3rem;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+#table_wrap::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+}
+#gear_wrapper{
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+#add_gear{
+  flex: 4;
+  margin-right: 12px;
+}
+#rm_gear{
+  flex: 1;
 }
 #outputs{
-  padding: 8px;
-}
-.ans_t{
-  /* display: inline-block; */
-  float: left;
-  padding-right: 10px;
-}
-.ans_a{
-  /* display: inline-block; */
-  text-align: right;
-  float: right
+  align-self: flex-end;
 }

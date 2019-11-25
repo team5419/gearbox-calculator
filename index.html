@@ -6,12 +6,11 @@
   <title>FRC Single Speed Drivetrain Calculator</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-  <script src="bootstrap.min.js"></script>
 </head>
 
 <body>
   <div id="left">
-    <div id="motor_sl" class="form-group">
+    <div id="motors_wrap" class="input-group">
       <select id="motor_sl">
         <option>Falcon 500</option>
         <option selected>CIM</option>
@@ -27,142 +26,161 @@
         <option>BB RS-550</option>
       </select>
     </div>
-    <div id="gears" class="form-group">
+    <div id="gears" class="input-group">
+      <div id="table_wrap">
+        <table id="gears_table" class="">
+          <thead>
+            <tr>
+              <th scope="col">Driving Gear</th>
+              <th scope="col">Driven Gear</th>
+            </tr>
+          </thead>
+          <tbody id="gear_body"></tbody>
+        </table>
+      </div>
+      <div id="gear_wrapper">
+        <button id='add_gear' class='btn btn-dark'>Add</button>
+        <button id='rm_gear' class='btn btn-danger'>&times;</button>
+      </div>
     </div>
-    <div id="outputs" class="form-group">
-    </div>
-  </div>
-  <div id="right" class="form-group">
-    <div id="motors" class="form-group">
+    <div id="outputs" class="input-group">
       <table>
         <tr>
           <td>
             <div class="input-wrapper">
-
-            </div>
-          </td>
-          <td>
-            <div class="input-wrapper">
-
+              <label for="tg">Free Speed</label>
+              <span class="var form-control" id="dfs"></span>
             </div>
           </td>
         </tr>
         <tr>
           <td>
             <div class="input-wrapper">
-
+              <label for="mg">Adjusted Speed</label>
+              <span class="var form-control" id="das"></span>
             </div>
           </td>
+        </tr>
+        <tr>
           <td>
             <div class="input-wrapper">
-
+              <label for="mg">Current Draw per Motor</label>
+              <span class="var form-control" id="cdpm"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+              <label for="mg">Total Current Draw</label>
+              <span class="var form-control" id="tcd"></span>
             </div>
           </td>
         </tr>
       </table>
     </div>
-    <div id="constants" class="form-group">
+  </div>
+  <div id="right">
+    <div id="motors" class="input-group">
       <table>
         <tr>
           <td>
             <div class="input-wrapper">
-
+              <label for="fs">Free Speed</label>
+              <input class="var form-control" type="number" min="0" step="0.01" id="fs">
+            </div>
+          </td>
+          <td>
+            <div class="input-wrapper">
+              <label for="st">Stall Torque</label>
+              <input class="var form-control" type="number" min="0" step="0.01" id="st">
             </div>
           </td>
         </tr>
         <tr>
           <td>
             <div class="input-wrapper">
-
+              <label for="sc">Stall Current</label>
+              <input class="var form-control" type="number" min="0" step="0.01" id="sc">
+            </div>
+          </td>
+          <td>
+            <div class="input-wrapper">
+              <label for="fc">Free Current</label>
+              <input class="var form-control" type="number" min="0" step="0.01" id="fc">
             </div>
           </td>
         </tr>
       </table>
+    </div>
+    <div id="wheels" class="input-group">
+      <table>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+              <label for="fs">Wheel Radius</label>
+              <input class="var form-control" type="number" min="0" id="wr" value="3">
+            </div>
+          </td>
+          <td>
+            <div class="input-wrapper">
+              <label for="tw">Total Weight</label>
+              <input class="var form-control" type="number" min="0" id="tw" value="100">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="gearbox" class="input-group">
+      <table>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+              <label for="tg">Number of Gearboxes</label>
+              <input class="var form-control" type="number" min="1" id="tg" value="2">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+              <label for="mg">Motors per Gearbox</label>
+              <input class="var form-control" type="number" min="1" id="mg" value="2">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="constants" class="input-group">
+      <table>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+              <label for="slc">Speed Loss Constant</label>
+              <input class="var form-control" type="number" max="1" min="0" id="slc" step="0.01" value="0.81">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+              <label for="de">Drivetrain Effiency</label>
+              <input class="var form-control" type="number" max="1" min="0" id="de" step="0.01" value="0.9">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="input-wrapper">
+              <label for="st">Wheel Coefficent</label>
+              <input class="var form-control" type="number" min="0" id="wc" step="0.1" value="1.1">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-    </div>
-    <div id="gearbox" class="form-group">
-    </div>
-    <div id="weight" class="form-group">
-    </div>
-    <div id="weight" class="form-group">
-    </div>
-  </div>
-  <!-- <div id="drivetrain_vars" class="box">
-    <table class="table table-sm">
-      <tbody>
-        <tr>
-          <td><span>Free Speed (RPM)</span></td>
-          <td><input class="var form-control" type="number" min="0" id="fs"></td>
-        </tr>
-        <tr>
-          <td><span>Stall Torque (N*m)</span></td>
-          <td><input class="var form-control" type="number" min="0" id="st"></td>
-        </tr>
-        <tr>
-          <td><span>Stall Current (Amp)</span></td>
-          <td><input class="var form-control" type="number" min="0" id="sc"></td>
-        </tr>
-        <tr>
-          <td><span>Free Current (Amp)</span></td>
-          <td><input class="var form-control" type="number" min="0" id="fc"></td>
-        </tr>
-        <tr>
-          <td><span>Speed Loss Constant</span></td>
-          <td><input class="var form-control" type="number" max="1" min="0" id="slc" value="0.81"></td>
-        </tr>
-        <tr>
-          <td><span>Drivetrain Effiency</span></td>
-          <td><input class="var form-control" type="number" max="1" min="0" id="de" value="0.9"></td>
-        </tr>
-        <tr>
-          <td><span>Gearboxes</span></td>
-          <td><input class="var form-control" type="number" min="1" id="tg" value="2"></td>
-        </tr>
-        <tr>
-          <td><span>Motors in each gearbox</span></td>
-          <td><input class="var form-control" type="number" min="1" id="mg" value="2"></td>
-        </tr>
-        <tr>
-          <td><span>Total Weight (lbs)</span></td>
-          <td><input class="var form-control" type="number" min="0" id="tw" value="100"></td>
-        </tr>
-        <tr>
-          <td><span>Weight on Drivetrain Wheels</span></td>
-          <td><input class="var form-control" type="number" min="0" max="1" id="wa" value="1.00"></td>
-        </tr>
-        <tr>
-          <td><span>Wheel Diameter (in)</span></td>
-          <td><input class="var form-control" type="number" min="0" max="1" id="wd" value="4"></td>
-        </tr>
-        <tr>
-          <td><span>Wheel Coefficent</span></td>
-          <td><input class="var form-control" type="number" min="0" id="wc" value="1.1"></td>
-        </tr>
-    </table>
-    </tbody>
-  </div>
-  <div id="gears" class="box">
-    <table id="gears_table" class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Driving Gear</th>
-          <th scope="col">Driven Gear</th>
-        </tr>
-      </thead>
-      <tbody id="gear_body"></tbody>
-    </table>
-    <div id="gear_wrapper">
-      <button id='add_gear' class='btn btn-dark'>Add Gear</button>
-    </div>
-  </div>
-  <div id="outputs" class="box">
-    <span class="ans_t">Free Speed:</span>
-    <span class="ans_a" id="das"></span><br>
-    <span class="ans_t">Adjusted Speed:</span>
-    <span class="ans_a" id="dfs"></span><br>
-    <span class="ans_t">Current Draw / Motor:</span>
-    <span class="ans_a" id="cdpm"></span>
-  </div> -->
   <script type="text/javascript" src="motors.js"></script>
   <script src="./renderer.js"></script>
 </body>
