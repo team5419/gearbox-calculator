@@ -10,19 +10,18 @@ function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 500,
-    height: 650,
+    height: 627,
+    icon: './src/logo.png',
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
     }
   })
-  mainWindow.setMenuBarVisibility(false)
-  mainWindow.setAutoHideMenuBar(true)
-  mainWindow.removeMenu()
 
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('./src/index.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
