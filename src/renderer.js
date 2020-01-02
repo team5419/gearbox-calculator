@@ -4,7 +4,7 @@ var tg, wr;
 var mg, tw;
 var slc, de, wc;
 var ig, og;
-var inputIds = ["fs", "st", "sc", "fc", "slc", "de", "mg", "tg", "mg", "tw", "wr", "wc"];
+var inputIds = ["fs", "st", "sc", "fc", "wr", "tw", "tg", "mg", "slc", "de", "wc"];
 var motors = new Map([
     ["Falcon 500", [0, 0, 0, 0, 0]],
     ["CIM", [5330, 2.41, 131.00, 2.70, 336.29]],
@@ -57,28 +57,30 @@ $(document).ready(function () {
         update();
     }
     function update() {
-        console.log("update");
+        // console.log("update");
         fs = +inputs[0].val(); st = +inputs[1].val();
         sc = +inputs[2].val(); fc = +inputs[3].val();
 
+        wr = +inputs[4].val() * 0.0254;
+        tw = +inputs[5].val();
+
         tg = +inputs[6].val();
-        wr = +inputs[10].val();
-
         mg = +inputs[7].val();
-        tw = +inputs[8].val();
 
-        slc = +inputs[4].val();
-        de = +inputs[5].val();
-        wc = +inputs[11].val();
+        slc = +inputs[8].val();
+        de = +inputs[9].val();
+        wc = +inputs[10].val();
 
         ig = 1; og = 1;
         $(".driving").each(function (gear) { ig *= +$(this).val(); });
         $(".driven").each(function (gear) { og *= +$(this).val(); });
 
-        var dfs = freeSpeed(fs, wr, ig, og);
-        var cdpm = totalCurrentDraw(sc, fc, st, tw, tg, wr, de, mg, ig, og);
+        console.log(fs, st, sc, fc, tg, wr, mg, tw, slc, de, wc, ig, og)
 
-        console.log(cdpm * mg * tw);
+        var dfs = freeSpeed();
+        var cdpm = currentDrawPerMotor();
+
+        // console.log(cdpm * mg * tw);
 
         $("#dfs").text(round(dfs, 3) + " ft/s");
         $("#das").text(round(dfs * slc, 3) + " ft/s");
@@ -88,11 +90,13 @@ $(document).ready(function () {
     function round(val, num) {
         return Math.round(val * Math.pow(10, num)) / Math.pow(10, num);
     }
-    function freeSpeed(fs, wr, ig, og) {
-        return fs * ((wr * 0.0254) * 2 * Math.PI) / (0.3048 * 60) * ig / og;
+    function freeSpeed() {
+        return fs * (wr * 2 * Math.PI) / (0.3048 * 60) * ig / og;
     }
-    function totalCurrentDraw(sc, fc, st, tw, tg, wr, de, mg, ig, og) {
-        return ((sc - fc) / st * tw * wc / tg * 4.44822161526 * wr * 0.0254 / de / mg * ig / og) + fc;
+    function currentDrawPerMotor() {
+        // console.log(sc, fc, st, tw, tg, wr, de, mg)
+        console.log(((sc - fc) / st) * tw);
+        return ((sc - fc) / st * tw * wc / tg * 4.44822161526 * wr / de / mg * ig / og) + fc;
     }
 });
 //# sourceMappingURL=renderer.js.map
