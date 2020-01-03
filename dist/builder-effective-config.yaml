@@ -1,0 +1,10 @@
+directories:
+  output: dist
+  buildResources: build
+asar: true
+productName: Gearbox Calculator
+win:
+  target: portable
+  icon: ./build/icon.ico
+  publisherName: '5419'
+electronVersion: 7.1.7

@@ -19,5 +19,14 @@
   },
   "dependencies": {
     "jquery": "^3.4.1"
+  },
+  "build": {
+    "asar": true,
+    "productName": "Gearbox Calculator",
+    "win": {
+      "target": "portable",
+      "icon": "./build/icon.ico",
+      "publisherName": "5419"
+    }
   }
 }
