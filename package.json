@@ -1,11 +1,14 @@
 {
   "name": "gearbox-calculator",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "An application for calculations related to single speed gear boxes",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "reinstall": "rm -rf ./node_modules/ && npm install && npm start"
+    "reinstall": "rm -rf ./node_modules/ && npm install && npm start",
+    "compress": "electron-builder --dir",
+    "package": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
